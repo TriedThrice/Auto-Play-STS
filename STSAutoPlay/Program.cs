@@ -137,7 +137,7 @@ internal static class Program
         try
         {
             IKeyboardInput keyboard = WindowsKeyboardInput.ForProcess(processName);
-            Console.WriteLine("Type a key name (for example Enter, Space, Left, A), or 'quit'.");
+            Console.WriteLine("Type a key name (Enter, Escape, Space, 0-9). Type 'quit' to exit.");
 
             while (true)
             {
