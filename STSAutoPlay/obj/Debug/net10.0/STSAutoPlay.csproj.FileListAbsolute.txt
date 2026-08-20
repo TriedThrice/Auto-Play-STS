@@ -12,3 +12,4 @@ C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\obj\De
 C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\obj\Debug\net10.0\STSAutoPlay.pdb
 C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\obj\Debug\net10.0\STSAutoPlay.genruntimeconfig.cache
 C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\obj\Debug\net10.0\ref\STSAutoPlay.dll
+C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\obj\Debug\net10.0\STSAutoPlay.sourcelink.json

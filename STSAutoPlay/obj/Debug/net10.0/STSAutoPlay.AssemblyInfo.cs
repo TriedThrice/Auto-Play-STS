@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("STSAutoPlay")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8177f290ef52cdc733a2153a9ee8c5e475ef6bbb")]
 [assembly: System.Reflection.AssemblyProductAttribute("STSAutoPlay")]
 [assembly: System.Reflection.AssemblyTitleAttribute("STSAutoPlay")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
