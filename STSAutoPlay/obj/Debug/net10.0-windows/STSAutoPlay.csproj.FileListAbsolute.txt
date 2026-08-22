@@ -1,0 +1,15 @@
+C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\bin\Debug\net10.0-windows\STSAutoPlay.exe
+C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\bin\Debug\net10.0-windows\STSAutoPlay.deps.json
+C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\bin\Debug\net10.0-windows\STSAutoPlay.runtimeconfig.json
+C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\bin\Debug\net10.0-windows\STSAutoPlay.dll
+C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\bin\Debug\net10.0-windows\STSAutoPlay.pdb
+C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\obj\Debug\net10.0-windows\STSAutoPlay.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\obj\Debug\net10.0-windows\STSAutoPlay.AssemblyInfoInputs.cache
+C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\obj\Debug\net10.0-windows\STSAutoPlay.AssemblyInfo.cs
+C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\obj\Debug\net10.0-windows\STSAutoPlay.csproj.CoreCompileInputs.cache
+C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\obj\Debug\net10.0-windows\STSAutoPlay.sourcelink.json
+C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\obj\Debug\net10.0-windows\STSAutoPlay.dll
+C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\obj\Debug\net10.0-windows\refint\STSAutoPlay.dll
+C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\obj\Debug\net10.0-windows\STSAutoPlay.pdb
+C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\obj\Debug\net10.0-windows\STSAutoPlay.genruntimeconfig.cache
+C:\Users\Justin's PC\Documents\Practice C# Code\Auto Play STS\STSAutoPlay\obj\Debug\net10.0-windows\ref\STSAutoPlay.dll

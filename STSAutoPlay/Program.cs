@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace STSAutoPlay;
 
@@ -129,14 +130,20 @@ public sealed class WindowsKeyboardInput : IKeyboardInput
 
 internal static class Program
 {
+    [STAThread]
     private static void Main()
     {
-        Console.Write("Process name (without .exe): ");
-        string processName = Console.ReadLine()?.Trim() ?? string.Empty;
-
         try
         {
-            IKeyboardInput keyboard = WindowsKeyboardInput.ForProcess(processName);
+            ApplicationConfiguration.Initialize();
+            TargetApplication? target = ApplicationPicker.Show();
+            if (target is null)
+            {
+                return;
+            }
+
+            IKeyboardInput keyboard = new WindowsKeyboardInput(target.WindowHandle);
+            Console.WriteLine($"Selected: {target.DisplayName}");
             Console.WriteLine("Type a key name (Enter, Escape, Space, 0-9). Type 'quit' to exit.");
 
             while (true)
@@ -153,6 +160,110 @@ internal static class Program
         catch (Exception exception) when (exception is ArgumentException or InvalidOperationException)
         {
             Console.Error.WriteLine(exception.Message);
+        }
+    }
+}
+
+internal sealed record TargetApplication(string DisplayName, IntPtr WindowHandle);
+
+internal static class ApplicationPicker
+{
+    public static TargetApplication? Show()
+    {
+        List<TargetApplication> applications = Process.GetProcesses()
+            .Where(process => process.MainWindowHandle != IntPtr.Zero)
+            .Select(process => CreateTargetApplication(process))
+            .Where(application => application is not null)
+            .Cast<TargetApplication>()
+            .OrderBy(application => application.DisplayName)
+            .ToList();
+
+        using PickerForm form = new(applications);
+        return form.ShowDialog() == DialogResult.OK ? form.SelectedApplication : null;
+    }
+
+    private static TargetApplication? CreateTargetApplication(Process process)
+    {
+        try
+        {
+            string title = process.MainWindowTitle.Trim();
+            string name = process.ProcessName;
+            return new TargetApplication(
+                string.IsNullOrWhiteSpace(title) ? name : $"{title} ({name})",
+                process.MainWindowHandle);
+        }
+        catch (InvalidOperationException)
+        {
+            return null;
+        }
+        catch (System.ComponentModel.Win32Exception)
+        {
+            return null;
+        }
+        finally
+        {
+            process.Dispose();
+        }
+    }
+}
+
+internal sealed class PickerForm : Form
+{
+    private readonly ComboBox applicationList = new();
+
+    public PickerForm(IReadOnlyList<TargetApplication> applications)
+    {
+        Text = "Select target application";
+        StartPosition = FormStartPosition.CenterScreen;
+        MinimumSize = new Size(520, 150);
+        Size = new Size(620, 180);
+        FormBorderStyle = FormBorderStyle.FixedDialog;
+        MaximizeBox = false;
+        MinimizeBox = false;
+
+        Label prompt = new()
+        {
+            AutoSize = true,
+            Text = "Choose an open application:",
+            Location = new Point(16, 16)
+        };
+
+        applicationList.DropDownStyle = ComboBoxStyle.DropDownList;
+        applicationList.DataSource = applications.ToList();
+        applicationList.DisplayMember = nameof(TargetApplication.DisplayName);
+        applicationList.Location = new Point(16, 42);
+        applicationList.Width = 570;
+
+        Button selectButton = new()
+        {
+            DialogResult = DialogResult.OK,
+            Text = "Select",
+            Location = new Point(416, 82),
+            Width = 82
+        };
+        selectButton.Click += (_, _) => ValidateSelection();
+
+        Button cancelButton = new()
+        {
+            DialogResult = DialogResult.Cancel,
+            Text = "Cancel",
+            Location = new Point(504, 82),
+            Width = 82
+        };
+
+        Controls.AddRange([prompt, applicationList, selectButton, cancelButton]);
+        AcceptButton = selectButton;
+        CancelButton = cancelButton;
+    }
+
+    public TargetApplication? SelectedApplication => applicationList.SelectedItem as TargetApplication;
+
+    private void ValidateSelection()
+    {
+        if (SelectedApplication is null)
+        {
+            DialogResult = DialogResult.None;
+            MessageBox.Show(this, "Select an application first.", "No application selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
